@@ -1,0 +1,16 @@
+@import '../../content/sass/variables.scss';
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+
+.input-wrapper {
+    input {
+        border-radius: $border-radius;
+        border: 1px solid $border-color;
+        @include font-size-m;
+        padding: $space1;
+
+        &:focus, &:active {
+            outline: none;        
+        }
+    }
+}

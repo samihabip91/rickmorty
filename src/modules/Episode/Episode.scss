@@ -1,0 +1,35 @@
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+@import '../../content/sass/mixins/mixins.scss';
+@import '../../content/sass/mixins/flexbox.scss';
+
+.episode {
+    border-radius: $border-radius;
+    padding: $space1 $space2;
+    background-color: $episode-color;
+    color: $episode-text-color;
+    margin-bottom: $space2;
+    cursor: pointer;
+    @include box-shadow($box-shadow-episode);
+
+    &:hover {
+        background-color: $episode-hover-color;
+    }
+
+    h2 {
+        color: $episode-text-color;
+    }
+
+    .sub-line {
+        padding-left: $space0;
+        @include display(flex);
+
+        label{
+            @include font-size-m;
+
+            &:first-child {
+                padding-right: $space2;
+            }
+        }
+    }
+}

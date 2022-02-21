@@ -1,0 +1,44 @@
+@import './typography.scss';
+@import './color.scss';
+@import './mixins/flexbox.scss';
+
+html {
+    &, & body {
+        height: 100%;
+        background-color: $bg-color;
+
+        header, header * {
+            background-color: #fff;
+            margin-bottom: 0;
+        }
+
+        header {
+            @include display(flex);
+            @include align-items(center);
+            padding-left: 28px;
+
+            img {
+                width: 50px;
+            }
+
+            p {
+                padding-left: $space5;
+                font-weight: bold;
+                font-size: $font-size-xl;
+            }
+        }
+
+        .content {
+            padding: $space2;
+            border-top: 2px solid $border-color;
+            @include display(flex);
+            @include justify-content(center);
+            width: 100%;
+
+            .content-inner {
+                @include display(flex);
+                width: 100%;
+            }
+        }
+    }
+}

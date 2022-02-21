@@ -1,0 +1,53 @@
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+@import '../../content/sass/mixins/flexbox.scss';
+
+.episode-container {
+    @include display(flex);
+    width: 100%;
+
+    .episodes {
+        border-radius: $border-radius;
+        padding: $space2 $space3;
+        background-color: $episode-list-color;
+
+        .episode-header {
+            margin-bottom: $space2;
+        }
+    }
+
+    @media(max-width: $mobile-max-width) {
+        @include flex-direction(column);
+        
+        .episodes {
+            margin-bottom: $space1;
+            
+            .episode-header {
+                @include display(flex);
+                @include justify-content(space-between);
+
+                svg {
+                    @include align-self(center);
+                }
+            }
+        }
+    }
+
+    @media(min-width: $desktop-min-width) {
+        width: 100%;
+
+        .episodes {
+            width: 25%;
+
+            .episode-header {
+                svg {
+                    display: none;
+                }
+            }
+        }
+
+        .episode-detail {
+            width: 75%;
+        }
+    }
+}

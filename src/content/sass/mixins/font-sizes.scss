@@ -1,0 +1,44 @@
+@import '../variables.scss';
+
+//TYPOGRAPHY
+//Font size | Line height
+//12px      | 18px
+//14px      | 20px
+//16px      | 22px
+//18px      | 24px
+//24px      | 30px
+//36px      | 48px
+
+//IMPORTANT NOTE:
+//The typography might not match with some designs.
+//In that case, please use an external line-height.
+
+@mixin font-size-xs {
+    font-size: $font-size-xs;
+    line-height: $line-height-xs;
+}
+
+@mixin font-size-s {
+    font-size: $font-size-s;
+    line-height: $line-height-s;
+}
+
+@mixin font-size-m {
+    font-size: $font-size-m;
+    line-height: $line-height-m;
+}
+
+@mixin font-size-l {
+    font-size: $font-size-l;
+    line-height: $line-height-l;
+}
+
+@mixin font-size-xl {
+    font-size: $font-size-xl;
+    line-height: $line-height-xl;
+}
+
+@mixin font-size-xxl {
+    font-size: $font-size-xxl;
+    line-height: $line-height-xxl;
+}

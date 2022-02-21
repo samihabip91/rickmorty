@@ -1,0 +1,17 @@
+@import '../../content/sass/variables.scss';
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+
+.dropdownlist {
+    margin: 0 $space4;
+
+    select {
+        border: 1px solid $border-color;
+        height: 40px;
+        padding: $space1;
+
+        &:focus, &:active {
+            outline: none;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+@import './mixins/font-sizes.scss';
+@import './color.scss';
+@import '../../../node_modules/bootstrap/scss/bootstrap.scss';
+
+h1, h2, h3 {
+    margin: 0;
+    color: $text-color;
+}
+
+h1 {
+    @include font-size-xxl;
+}
+
+h2 {
+    @include font-size-xl;
+}
+
+h3 {
+    @include font-size-l;
+}
+
+a {
+    color: $text-color;
+
+    &, &:hover {
+        text-decoration: none;
+    }
+}

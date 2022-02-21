@@ -1,0 +1,39 @@
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+@import '../../content/sass/mixins/flexbox.scss';
+
+.charachert-list {
+    .charachter-list-filter {
+        padding: $space4 0;
+        border-bottom: 1px solid $border-color;
+        @include display(flex);
+        @include justify-content(space-between);
+
+        .charachter-list-filter-second {
+            @include display(flex);
+        }
+    }
+
+    .charachters {
+        padding: $space3;
+        background-color: $charachters-color;
+        @include display(flex);
+        @include flex-wrap(wrap);
+    }
+
+    @media(max-width: $mobile-max-width) {
+        .charachter-list-filter {
+           @include display(flex);
+           @include flex-direction(column);
+           @include align-items(center);
+
+           & > * {
+               margin-bottom: $space1;
+           }
+
+           & * {
+               width: 100%;
+           }
+        }  
+    }
+}

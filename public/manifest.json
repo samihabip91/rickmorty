@@ -1,0 +1,9 @@
+{
+  "short_name": "Rick and Morty",
+  "name": "Rick and Morty Episodes",
+  "icons": [],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "green"
+}

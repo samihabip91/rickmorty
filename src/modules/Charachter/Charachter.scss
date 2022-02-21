@@ -1,0 +1,58 @@
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+@import '../../content/sass/mixins/flexbox.scss';
+@import '../../content/sass/mixins/mixins.scss';
+
+.charachter {
+    border-radius: $border-radius-l;
+    background-color: $charachter-color;
+    border: 1px solid $charachter-color;
+    margin-bottom: $space5;
+    overflow: hidden;
+    @include display(flex);
+    @include box-shadow($box-shadow-charachter);
+
+    &:hover {
+        box-shadow: 1px;
+    }
+
+    img {
+        width: $charachter-length;
+    }
+
+    .info {
+        padding: $space1 $space2;
+        @include display(flex);
+        @include flex-direction(column);
+        @include dot;
+        @include field;
+
+        label {
+            @include font-size-s;
+        }
+    }
+
+    @media(min-width: $desktop-min-width) {
+        width: 32%;
+        margin: $space1;
+    }
+    
+    @media (max-width: $mobile-max-width) {
+        width: 100%;
+
+        img {
+            width: 33%;
+        }
+
+        .info {
+            .field {
+                @include flex-direction(row);
+                @include flex-wrap(wrap);
+
+                .field-title {
+                    margin-right: $space1;
+                }
+            }
+        }
+    }
+}

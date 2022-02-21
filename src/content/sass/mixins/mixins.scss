@@ -1,0 +1,55 @@
+@import '../variables.scss';
+@import '../color.scss';
+
+@mixin dot {
+    .dot {
+        @include display(flex);
+
+        &:before {
+            width:6px;
+            height:6px;
+            border-radius: 50%;
+            content: '';
+            display: inline-block;
+            margin: auto $space0;
+            margin-right: $space0;
+        }
+
+        &.Alive:before {
+            background-color: $positive-color;
+        }
+        
+        &.Dead:before {
+            background-color: $negative-color;
+        }
+        
+        &.unknown:before {
+            background-color: $notr-color;
+        }
+    }
+}
+
+@mixin field($flexDirection: column, $isRow: false) {
+    .field {
+        padding-top: $space2;
+        @include display(flex);
+        @include flex-direction($flexDirection);
+
+        @if($isRow) {
+            .field-title {
+                padding-right: $space2;
+            }
+        }
+
+        .field-title {
+            color: gray;
+        }
+    }
+}
+
+@mixin box-shadow($boxShadow) {
+    box-shadow: $boxShadow;
+    -webkit-box-shadow: $boxShadow;
+    -moz-box-shadow: $boxShadow;
+}
+

@@ -1,0 +1,34 @@
+@import '../../content/sass/color.scss';
+@import '../../content/sass/mixins/font-sizes.scss';
+@import '../../content/sass/mixins/flexbox.scss';
+
+.episode-detail {
+    margin-left: $space5;
+    margin-right: $space4;
+    border-radius: $border-radius;
+    border: 1px solid $border-color;
+    padding: $space5 $space4;
+
+    .episode-detail-header {
+        padding-bottom: $space3;
+        border-bottom: 1px solid $border-color;
+
+        .sub-line {
+            @include display(flex);
+            padding-top: $space0;
+            @include font-size-m;
+
+            .code {
+                padding-right: $space2;
+            }
+
+            .right {
+                margin-left: auto;
+            }
+        }
+    }
+
+    @media (max-width: $mobile-max-width) {
+        margin: 0;
+    }
+}
