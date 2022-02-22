@@ -25,6 +25,7 @@ function EpisodeList(props) {
         });
 
         return () => subscription.unsubscribe();
+        
     }, []);
 
     useEffect(() => {

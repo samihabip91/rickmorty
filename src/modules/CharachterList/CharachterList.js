@@ -48,6 +48,7 @@ function CharachterList(props) {
     }
 
     const onSort = (value) => {
+        //Burası aslında filterReducer'la birlikte 1 reducer olmalı idi
         var data = utils.sort(props.model, "name", value);
         setFilteredCharacters(data);
     }

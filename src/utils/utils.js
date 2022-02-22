@@ -1,11 +1,13 @@
 import _ from 'lodash';
 
-export function getIdsByUrls(urls) {
-    var ids = urls.map(u => {
-        var parts = u.split('/');
+export function getIdFromUrl(url) {
+    var parts = url.split('/');
 
-        return parseInt(parts[parts.length - 1]);
-    });
+    return parseInt(parts[parts.length - 1]);
+}
+
+export function getIdsByUrls(urls) {
+    var ids = urls.map(getIdFromUrl);
 
     return ids;
 }

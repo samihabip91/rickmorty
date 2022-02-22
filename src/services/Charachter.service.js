@@ -1,6 +1,6 @@
-import { of } from 'rxjs'
+import { from, of } from 'rxjs'
 import { ajax } from 'rxjs/ajax'
-import { map, catchError } from 'rxjs/operators'
+import { tap, map, catchError } from 'rxjs/operators'
 import _ from 'lodash';
 
 import appConfig from "../config.json";
@@ -11,6 +11,7 @@ export function  getCharachterList(charachterIds){
 
     const observable$ = ajax.get(appConfig.API_URL + 'character/' + charachterIdsString)
         .pipe(
+            tap(data => console.log('characters', data)),
             map(data => data.response),
             catchError(error => of(error))
         );
@@ -28,7 +29,11 @@ export function getMissingCharacters(characters, ids) {
     var characterIds = characters.map(c => c.id);
     var missingIds = _.filter(ids, (id) => characterIds.indexOf(parseInt(id)) == -1);
 
-    return getCharachterList(missingIds);
+    if(missingIds && missingIds.length > 0) {
+        return getCharachterList(missingIds);
+    }
+    else
+        return from([]);
 }
 
 export function getCharactersByIds(characters, ids) {

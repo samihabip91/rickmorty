@@ -1,4 +1,4 @@
-import {useState, useEffect, React} from 'react';
+import {useEffect, React} from 'react';
 import {connect} from 'react-redux';
 
 import CharachterList from '../CharachterList/CharachterList.js';
@@ -12,22 +12,20 @@ import './EpisodeDetail.scss';
 import moment from 'moment';
 
 function EpisodeDetail(props) {
-    const [episodeCharacters, setEpisodeCharacters] = useState([]);
-
-    useEffect(() => {
-        var characterIds = utils.getIdsByUrls(props.model.characters);
-        var subscription = CharachterService.getMissingCharacters(props.characters, characterIds).subscribe((data) => {
-            if(data && data.length > 0)
-                props.addCharacters(data);
-
-            setEpisodeCharacters(CharachterService.getCharactersByIds(props.characters, characterIds));
-        });
+    useEffect(() => {    
+        var subscription = CharachterService
+            .getMissingCharacters(props.characters, props.model.characters)
+            .subscribe((data) => {
+                if(data != undefined && data.length > 0) {
+                    props.addCharacters(data);
+                }
+            });
 
         return () => subscription.unsubscribe();
-    }, []);
+    }, [props.characters]);
 
     return (
-        <div className="episode-detail" >
+        <div className="episode-detail">
             <div className="episode-detail-header" >
                 <h1 className="episode-name">{props.model.name}</h1>
                 <div className="sub-line" >
@@ -36,14 +34,18 @@ function EpisodeDetail(props) {
                     <label className="right" >{moment(props.model.created).format('DD/MM/YYYY hh:mm')}</label>
                 </div>
             </div>
-            <CharachterList model={episodeCharacters} />
+            <CharachterList model={props.episodeCharacters} />
         </div>
     );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
+    var { characters } = state;
+    var episodeCharacters = CharachterService.getCharactersByIds(characters, props.model.characters);
+    
     return { 
-        characters: state.characters
+        characters,
+        episodeCharacters
     };
 }
 
@@ -53,7 +55,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(EpisodeDetail);
-
-
